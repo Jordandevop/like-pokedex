@@ -6,7 +6,7 @@ const PokemonCard = ({ pokemonCard }) => {
     const navigateTo = (name) => {
         navigate("/pokemon/" + name)
     }
-    return <Card style={{ width: '16rem' }} onClick={navigateTo(pokemonCard.name)}>
+    return <Card style={{ width: '18rem' }} onClick={() => { navigateTo(pokemonCard.name) }}>
         <Card.Img variant="top" src={"https://img.pokemondb.net/artwork/" + pokemonCard.name + ".jpg"} />
         <Card.Body>
             <Card.Title className='d-flex justify-content-center mb-2'>{pokemonCard.name}</Card.Title>

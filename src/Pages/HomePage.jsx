@@ -10,16 +10,19 @@ const HomePage = () => {
     const [limit, setLimit] = useState(18)
     const [currentPage, SetCurrentPage] = useState(1);
     const [maxPage, SetMaxPage] = useState(500);
-    const navigate = useNavigate();
+
+
+
 
     const fetchPokemons = async () => {
         try {
             const offset = (currentPage - 1) * limit;
             const response = await PokemonsServices.getAllPokemons(offset, limit);
             setPokemons(response.data.results);
+
             SetMaxPage(response.data.count / limit)
 
-            console.log(response.data.results);
+
 
         } catch (error) {
             console.log(error);
