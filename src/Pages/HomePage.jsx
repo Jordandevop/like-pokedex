@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PokemonsServices from "../Services/PokemonsServices";
-import { Await } from "react-router-dom";
+import { Await, useNavigate } from "react-router-dom";
 import { Container, Pagination } from "react-bootstrap";
 import PokemonCard from "../Components/PokemonsCards";
 
@@ -10,6 +10,7 @@ const HomePage = () => {
     const [limit, setLimit] = useState(18)
     const [currentPage, SetCurrentPage] = useState(1);
     const [maxPage, SetMaxPage] = useState(500);
+    const navigate = useNavigate();
 
     const fetchPokemons = async () => {
         try {
