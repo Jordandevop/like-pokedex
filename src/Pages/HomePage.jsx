@@ -34,7 +34,7 @@ const HomePage = () => {
     useEffect(() => {
         fetchPokemons()
     }, [currentPage])
-    return <Container className="d-flex flex-column align-items-center" >
+    return <Container className="d-flex flex-column align-items-center " >
 
         <h1>Bienvenue sur le Pokedex</h1>
 

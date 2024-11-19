@@ -1,3 +1,273 @@
+:root {
+    --header-color: #3564ae;
+    --body-background: #2a4e89;
+    --element-backgound: #4f7ec9;
+    --white: #FFFFFF;
+    --title-color: #f5b585;
+    --font-style: 'Pokemon Solid', sans-serif;
+    --yellow-pokemon: #f5b585;
+    --type-normal: #ada594;
+    --type-combat: #a55239;
+    --type-flying: #9cadf7;
+    --type-poison: #b55aa5;
+    --type-ground: #d6b55a;
+    --type-rock: #bda55a;
+    --type-bug: #adbd21;
+    --type-spectrum: #6363b5;
+    --type-steel: #adadc6;
+    --type-plant: #7bce52;
+    --type-fire: #f75231;
+    --type-water: #399cff;
+    --type-electric: #ffc631;
+    --type-psy: #ff73a5;
+    --type-ice: #5acee7;
+    --type-dragon: #8858f6;
+    --type-darkness: #735a4a;
+    --type-fairy: #e09ae3;
+    --type-unknow: #68a090;
+    --pokemon-color-Red: #980000;
+    --pokemon-color-Blue: #000098;
+    --pokemon-color-Yellow: #FFCC00;
+    --pokemon-color-Gold: #FFD700;
+    --pokemon-color-Silver: #C0C0C0;
+    --pokemon-color-Crystal: #8080FF;
+    --pokemon-color-Ruby: #A00000;
+    --pokemon-color-Sapphire: #0000A0;
+    --pokemon-color-Emerald: #00A0A0;
+    --pokemon-color-FireRed: #FF7324;
+    --pokemon-color-LeafGreen: #77CC6D;
+    --pokemon-color-Diamond: #AAAAFF;
+    --pokemon-color-Pearl: #7D7D99;
+    --pokemon-color-Platinum: #D1D1E0;
+    --pokemon-color-HeartGold: #E6BE8A;
+    --pokemon-color-SoulSilver: #C0C0C0;
+    --pokemon-color-Black: #000000;
+    --pokemon-color-White: #FFFFFF;
+    --pokemon-color-Black2: #000000;
+    --pokemon-color-White2: #FFFFFF;
+    --pokemon-color-X: #6A5ACD;
+    --pokemon-color-Y: #FF4500;
+    --pokemon-color-OmegaRuby: #A00000;
+    --pokemon-color-AlphaSapphire: #0000A0;
+    --pokemon-color-Sun: #FFD700;
+    --pokemon-color-Moon: #000000;
+    --pokemon-color-UltraSun: #FFD700;
+    --pokemon-color-UltraMoon: #000000;
+    --pokemon-color-Sword: #AB2D00;
+    --pokemon-color-Shield: #0071CC;
+}
+
+.normal {
+    background: var(--type-normal);
+}
+
+.fighting {
+    background: var(--type-combat);
+}
+
+.flying {
+    background: var(--type-flying);
+}
+
+.poison {
+    background: var(--type-poison);
+}
+
+.ground {
+    background: var(--type-ground);
+}
+
+.rock {
+    background: var(--type-rock);
+}
+
+.bug {
+    background: var(--type-bug);
+}
+
+.ghost {
+    background: var(--type-spectrum);
+}
+
+.steel {
+    background: var(--type-steel);
+}
+
+.fire {
+    background: var(--type-fire);
+}
+
+.grass {
+    background: var(--type-plant);
+}
+
+.water {
+    background: var(--type-water);
+}
+
+.electric {
+    background: var(--type-electric);
+}
+
+.psychic {
+    background: var(--type-psy);
+}
+
+.ice {
+    background: var(--type-ice);
+}
+
+.dragon {
+    background: var(--type-dragon);
+}
+
+.dark {
+    background: var(--type-darkness);
+}
+
+.fairly {
+    background: var(--type-fairy);
+}
+
+.unknown {
+    background: var(--type-fairy);
+}
+
+.shadow {
+    background: var(--type-darkness);
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--title-color) !important;
+}
+
+.red {
+    background-color: var(--pokemon-color-Red);
+}
+
+.blue {
+    background-color: var(--pokemon-color-Blue);
+}
+
+.yellow {
+    background-color: var(--pokemon-color-Yellow);
+}
+
+.gold {
+    background-color: var(--pokemon-color-Gold);
+}
+
+.silver {
+    background-color: var(--pokemon-color-Silver);
+}
+
+.crystal {
+    background-color: var(--pokemon-color-Crystal);
+}
+
+.ruby {
+    background-color: var(--pokemon-color-Ruby);
+}
+
+.sapphire {
+    background-color: var(--pokemon-color-Sapphire);
+}
+
+.emerald {
+    background-color: var(--pokemon-color-Emerald);
+}
+
+.firered {
+    background-color: var(--pokemon-color-FireRed);
+}
+
+.leafgreen {
+    background-color: var(--pokemon-color-LeafGreen);
+}
+
+.diamond {
+    background-color: var(--pokemon-color-Diamond);
+}
+
+.pearl {
+    background-color: var(--pokemon-color-Pearl);
+}
+
+.platinum {
+    background-color: var(--pokemon-color-Platinum);
+}
+
+.heartgold {
+    background-color: var(--pokemon-color-HeartGold);
+}
+
+.soulsilver {
+    background-color: var(--pokemon-color-SoulSilver);
+}
+
+.black {
+    background-color: var(--pokemon-color-Black);
+}
+
+.white {
+    background-color: var(--pokemon-color-White);
+    border: 1px solid var(--title-color);
+    color: var(--title-color) !important;
+}
+
+.black-2 {
+    background-color: var(--pokemon-color-Black2);
+}
+
+.white-2 {
+    background-color: var(--pokemon-color-White2);
+    border: 1px solid var(--title-color);
+    color: var(--title-color) !important;
+}
+
+.x {
+    background-color: var(--pokemon-color-X);
+}
+
+.y {
+    background-color: var(--pokemon-color-Y);
+}
+
+.omegaruby {
+    background-color: var(--pokemon-color-OmegaRuby);
+}
+
+.alphasapphire {
+    background-color: var(--pokemon-color-AlphaSapphire);
+}
+
+.sun {
+    background-color: var(--pokemon-color-Sun);
+}
+
+.moon {
+    background-color: var(--pokemon-color-Moon);
+}
+
+.ultrasun {
+    background-color: var(--pokemon-color-UltraSun);
+}
+
+.ultramoon {
+    background-color: var(--pokemon-color-UltraMoon);
+}
+
+.sword {
+    background-color: var(--pokemon-color-Sword);
+}
+
+.shield {
+    background-color: var(--pokemon-color-Shield);
+}
+
+
+
 .card {
     border: none !important;
 }
@@ -6,4 +276,29 @@
     transform: scale(1.05);
     cursor: pointer;
 
+}
+
+.btn-primary {
+    text-transform: capitalize;
+    border: none;
+}
+
+p {
+    text-transform: capitalize;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+a {
+    color: #FFCC00 !important;
+}
+
+.bg-body-tertiary {
+
+    width: 100%;
+    position: fixed;
+    background-color: #3B4CCA !important;
+    z-index: 1;
 }
