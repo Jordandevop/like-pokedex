@@ -36,7 +36,7 @@ const HomePage = () => {
     }, [currentPage])
     return <Container className="d-flex flex-column align-items-center " >
 
-        <h1>Bienvenue sur le Pokedex</h1>
+        <h1 className="mt-5">Bienvenue sur le Pokedex</h1>
 
 
         <div className="d-flex justify-content-center flex-wrap gap-5 col-10">
