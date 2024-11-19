@@ -14,9 +14,6 @@ const PokemonDetailPage = () => {
     const [evolution, setEvolution] = useState([])
 
     const navigate = useNavigate();
-    const navigateTo = (path) => {
-        navigate(path);
-    }
 
 
     const fetchPokemonByName = async () => {
@@ -29,9 +26,8 @@ const PokemonDetailPage = () => {
             setPokemon({ ...resBis.data, ...res.data, ...response.data });
             setEvolution(resEvol.data)
 
-            // console.log(resEvol.data.chain.species.url);
-            console.log(resEvol.data.chain.evolves_to[0].evolves_to[0].species.name
-            );
+
+            console.log(response.data);
 
 
 
@@ -49,7 +45,7 @@ const PokemonDetailPage = () => {
 
     useEffect(() => {
         fetchPokemonByName()
-    }, [])
+    }, [name])
 
     const labels = pokemon.stats ? pokemon.stats.map(stat => stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)) : [];
     const dataValues = pokemon.stats ? pokemon.stats.map(stat => stat.base_stat) : [];
@@ -103,22 +99,24 @@ const PokemonDetailPage = () => {
         </div>
 
         <div className="d-flex flex-column col-4 m-5 ">
-            <div className="d-flex align-items-center">
+            <div className="d-flex flex-column ">
+                <h5>Biographie</h5>
                 <p>{pokemon.flavor_text_entries && pokemon.flavor_text_entries[32].flavor_text}</p>
             </div>
-            <div className="d-flex flex-wrap" >
-                {pokemon.game_indices && pokemon.game_indices.map((game) => {
+            <div className="d-flex flex-wrap " >
+                <h5>Version de Jeux: <br />   {pokemon.game_indices && pokemon.game_indices.map((game) => {
                     return <Button className={game.version.name + " m-1"} style={{ minWidth: "3rem", height: "30px" }
                     }> {game.version.name} </Button>
-                })}
+                })}</h5>
+
 
             </div>
-            <div className="d-flex flex-column  ">
-                <p>Types : {pokemon.types && pokemon.types.map((type) => {
+            <div className="d-flex flex-column">
+                <h5>Types : <br /> {pokemon.types && pokemon.types.map((type) => {
                     return <Button className={type.type.name + " m-1"} >{type.type.name}</Button>
-                })}</p>
-                <p>Lieu de vie : {pokemon.habitat && pokemon.habitat.name}</p>
-                <div className={pokemon.types && pokemon.types[0].type.name + " d-flex mb-2 p-3"} style={{ borderRadius: "10px" }}>
+                })}</h5>
+                <h5>Lieu de vie : {pokemon.habitat && pokemon.habitat.name}</h5>
+                <div className={pokemon.types && pokemon.types[0].type.name + " d-flex mb-2 p-3"} style={{ borderRadius: "10px", width: "200px", height: "200px" }}>
 
                     <div className="d-flex flex-column col-4">
                         <div>
@@ -154,10 +152,50 @@ const PokemonDetailPage = () => {
         <div className="d-flex flex-column col-4 align-items-center mt-5">
 
             <h1>Evolution du pokemon</h1>
-            {evolution.chain && <img className="mb-5" style={{ width: " 15rem" }} onClick={() => { navigateTo(pokemon.name) }} src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].species.name + ".jpg"} alt="" />}
-            {evolution.chain && <img className="mt-4" style={{ width: " 15rem" }} src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].evolves_to[0].species.name + ".jpg"} alt="" />}
 
-            <Button variant="primary" onClick={() => { navigateTo("/") }}>Retour aux Pokemon</Button>
+            {evolution.chain && evolution.chain.species.name !== name && (
+                <img
+                    className="mb-5"
+                    style={{ width: "9rem", cursor: "pointer" }}
+                    src={"https://img.pokemondb.net/artwork/" + evolution.chain.species.name + ".jpg"}
+                    onClick={() => {
+                        navigate('/pokemon/' + evolution.chain.species.name, { replace: true });
+                    }}
+                    alt={evolution.chain.species.name}
+                />
+            )}
+
+            {evolution.chain &&
+                evolution.chain.evolves_to.length > 0 &&
+                evolution.chain.evolves_to[0].species.name !== name && (
+                    <img
+                        className="mb-5"
+                        style={{ width: "9rem", cursor: "pointer" }}
+                        src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].species.name + ".jpg"}
+                        onClick={() => {
+                            navigate('/pokemon/' + evolution.chain.evolves_to[0].species.name, { replace: true });
+                        }}
+                        alt={evolution.chain.evolves_to[0].species.name}
+                    />
+                )}
+            {evolution.chain &&
+                evolution.chain.evolves_to.length > 0 &&
+                evolution.chain.evolves_to[0].evolves_to.length > 0 &&
+                evolution.chain.evolves_to[0].evolves_to[0].species.name !== name && (
+                    <img
+                        className="mt-4"
+                        style={{ width: "10rem", cursor: "pointer" }}
+                        src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].evolves_to[0].species.name + ".jpg"}
+                        onClick={() => {
+                            navigate('/pokemon/' + evolution.chain.evolves_to[0].evolves_to[0].species.name, { replace: true });
+                        }}
+                        alt={evolution.chain.evolves_to[0].evolves_to[0].species.name}
+                    />
+                )}
+            <Button variant="primary" onClick={() => { navigate("/") }}>Retour aux Pokemon</Button>
+
+
+
         </div>
 
 
