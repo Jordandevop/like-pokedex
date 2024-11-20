@@ -302,6 +302,7 @@ a {
     position: fixed;
     background-color: #3B4CCA !important;
     z-index: 1;
+    top: 0;
 }
 
 img:hover {

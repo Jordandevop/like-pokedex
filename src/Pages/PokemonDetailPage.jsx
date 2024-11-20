@@ -81,7 +81,7 @@ const PokemonDetailPage = () => {
 
 
 
-    return <Container className="d-flex col-12 align-items-start" >
+    return <Container className="d-flex col-10 align-items-start mt-3" >
 
 
         <div className="d-flex flex-column col-4 mt-5 ">
@@ -100,11 +100,11 @@ const PokemonDetailPage = () => {
         </div>
 
         <div className="d-flex flex-column col-4 m-5 ">
-            <div className="d-flex flex-column ">
+            <div className="d-flex flex-column m-1">
                 <h5>Biographie</h5>
                 <p>{pokemon.flavor_text_entries && pokemon.flavor_text_entries[32].flavor_text}</p>
             </div>
-            <div className="d-flex flex-wrap " >
+            <div className="d-flex flex-wrap m-1" >
                 <h5>Version de Jeux: <br />   {pokemon.game_indices && pokemon.game_indices.map((game) => {
                     return <Button className={game.version.name + " m-1"} style={{ minWidth: "3rem", height: "30px" }
                     }> {game.version.name} </Button>
@@ -112,12 +112,28 @@ const PokemonDetailPage = () => {
 
 
             </div>
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column m-1">
                 <h5>Types : <br /> {pokemon.types && pokemon.types.map((type) => {
                     return <Button className={type.type.name + " m-1"} >{type.type.name}</Button>
                 })}</h5>
-                <h5>Lieu de vie : {pokemon.habitat && pokemon.habitat.name}</h5>
+                {/* <h5>Lieu de vie : {pokemon.habitat && pokemon.habitat.name}</h5> */}
+                <div className="d-flex ">
+                    <h5>Faiblesses : <br />{pokemon.damage_relations && pokemon.damage_relations.double_damage_from.map((faiblesse) => {
+                        return <Button className={faiblesse.name + " m-1"} style={{ width: "fit-content", height: "fit-content" }}>{faiblesse.name}</Button>
+                    })
+                    }</h5>
+
+
+                </div>
+                <div className="d-flex flex-column">
+                    <h5>Fort contre : <br />{pokemon.damage_relations && pokemon.damage_relations.double_damage_to.map((fort) => {
+                        return <Button className={fort.name + " m-1"} style={{ width: "fit-content", height: "fit-content" }}>{fort.name}</Button>
+                    })
+                    }
+                    </h5>
+                </div>
                 <div className={pokemon.types && pokemon.types[0].type.name + " d-flex mb-2 p-3"} style={{ borderRadius: "10px", width: "fit-content", height: "fit-content" }}>
+
 
                     <div className="d-flex flex-column col-4">
                         <div>
@@ -142,17 +158,7 @@ const PokemonDetailPage = () => {
 
 
             </div>
-            <div className="d-flex flex-column">
-                <h5>Faiblesses : <br /></h5>{pokemon.damage_relations && pokemon.damage_relations.double_damage_from.map((faiblesse) => {
-                    return <Button className={faiblesse.name}>{faiblesse.name}</Button>
-                })
-                }
 
-
-            </div>
-            <div className="d-flex">
-
-            </div>
 
         </div>
         <div className="d-flex flex-column col-4 align-items-center mt-5">
@@ -176,7 +182,7 @@ const PokemonDetailPage = () => {
                 evolution.chain.evolves_to[0].species.name !== name && (
                     <img
                         className="mb-5"
-                        style={{ width: "9rem", cursor: "pointer" }}
+                        style={{ width: "15rem", cursor: "pointer" }}
                         src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].species.name + ".jpg"}
                         onClick={() => {
                             navigate('/pokemon/' + evolution.chain.evolves_to[0].species.name, { replace: true });
@@ -190,7 +196,7 @@ const PokemonDetailPage = () => {
                 evolution.chain.evolves_to[0].evolves_to[0].species.name !== name && (
                     <img
                         className="mt-4"
-                        style={{ width: "10rem", cursor: "pointer" }}
+                        style={{ width: "15rem", cursor: "pointer" }}
                         src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].evolves_to[0].species.name + ".jpg"}
                         onClick={() => {
                             navigate('/pokemon/' + evolution.chain.evolves_to[0].evolves_to[0].species.name, { replace: true });
