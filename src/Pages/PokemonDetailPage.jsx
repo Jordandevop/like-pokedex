@@ -25,19 +25,6 @@ const PokemonDetailPage = () => {
 
             setPokemon({ ...resBis.data, ...res.data, ...response.data });
             setEvolution(resEvol.data)
-
-
-            console.log(resBis.data.damage_relations.double_damage_from[0].name
-            );
-
-
-
-
-
-
-
-
-
         } catch (error) {
             console.log(error);
 
@@ -77,10 +64,6 @@ const PokemonDetailPage = () => {
         },
     };
 
-
-
-
-
     return <Container className="d-flex col-10 align-items-start mt-3" >
 
 
@@ -106,7 +89,7 @@ const PokemonDetailPage = () => {
             </div>
             <div className="d-flex flex-wrap m-1" >
                 <h5>Version de Jeux: <br />   {pokemon.game_indices && pokemon.game_indices.map((game) => {
-                    return <Button className={game.version.name + " m-1"} style={{ minWidth: "3rem", height: "30px" }
+                    return <Button key={game.version.name} className={game.version.name + " m-1"} style={{ minWidth: "3rem", height: "30px" }
                     }> {game.version.name} </Button>
                 })}</h5>
 
@@ -114,12 +97,14 @@ const PokemonDetailPage = () => {
             </div>
             <div className="d-flex flex-column m-1">
                 <h5>Types : <br /> {pokemon.types && pokemon.types.map((type) => {
-                    return <Button className={type.type.name + " m-1"} >{type.type.name}</Button>
+                    return <Button key={type.type.name} className={type.type.name + " m-1"} onClick={() => {
+                        navigate('/type/' + type.type.name)
+                    }} >{type.type.name}</Button>
                 })}</h5>
                 {/* <h5>Lieu de vie : {pokemon.habitat && pokemon.habitat.name}</h5> */}
                 <div className="d-flex ">
                     <h5>Faiblesses : <br />{pokemon.damage_relations && pokemon.damage_relations.double_damage_from.map((faiblesse) => {
-                        return <Button className={faiblesse.name + " m-1"} style={{ width: "fit-content", height: "fit-content" }}>{faiblesse.name}</Button>
+                        return <Button key={faiblesse.name} className={faiblesse.name + " m-1"} style={{ width: "fit-content", height: "fit-content" }}>{faiblesse.name}</Button>
                     })
                     }</h5>
 
@@ -127,7 +112,7 @@ const PokemonDetailPage = () => {
                 </div>
                 <div className="d-flex flex-column">
                     <h5>Fort contre : <br />{pokemon.damage_relations && pokemon.damage_relations.double_damage_to.map((fort) => {
-                        return <Button className={fort.name + " m-1"} style={{ width: "fit-content", height: "fit-content" }}>{fort.name}</Button>
+                        return <Button key={fort.name} className={fort.name + " m-1"} style={{ width: "fit-content", height: "fit-content" }}>{fort.name}</Button>
                     })
                     }
                     </h5>
@@ -149,7 +134,7 @@ const PokemonDetailPage = () => {
                         <p style={{ color: "white" }}>Compétences :</p>
 
                         <p className="d-flex flex-column">{pokemon.abilities && pokemon.abilities.map((competence) => {
-                            return <Button className="mb-4" variant="secondary">{competence.ability.name}</Button>
+                            return <Button key={competence.ability.name} className="mb-4" variant="secondary">{competence.ability.name}</Button>
                         })}</p>
 
                     </div>

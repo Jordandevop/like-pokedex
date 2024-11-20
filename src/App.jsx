@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import PokemonDetailPage from './Pages/PokemonDetailPage';
 import NavBar from './Components/Navbar';
+import TypesDetailPage from './Pages/TypesDetailPage';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage></HomePage>}></Route>
         <Route path='/pokemon/:name' element={<PokemonDetailPage></PokemonDetailPage>} ></Route>
+        <Route path='/type/:name' element={<TypesDetailPage></TypesDetailPage>}></Route>
       </Routes>
     </BrowserRouter>
 

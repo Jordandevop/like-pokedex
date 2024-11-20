@@ -1,10 +1,30 @@
+import { useEffect, useState } from 'react';
 import { NavDropdown } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import TypesServices from '../Services/TypesServices';
+import { useParams } from 'react-router-dom';
 
 const NavBar = () => {
+
+    const [types, SetTypes] = useState([]);
+
+    const fetchTypes = async () => {
+        try {
+            const response = await TypesServices.GetAlltypes();
+
+            SetTypes(response.data.results)
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+    useEffect(() => {
+        fetchTypes()
+    }, []);
+
     return <>
 
 
@@ -17,15 +37,10 @@ const NavBar = () => {
                         <Nav.Link href="/">Accueil</Nav.Link>
                         {/* <Nav.Link href="#link">Link</Nav.Link> */}
                         <NavDropdown title="Types" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
+                            {types && types.map((type) => {
+                                return <NavDropdown.Item href={'/type/' + type.name} key={type.name}>{type.name.charAt(0).toUpperCase() + type.name.slice(1)}</NavDropdown.Item>
+                            })}
+
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
