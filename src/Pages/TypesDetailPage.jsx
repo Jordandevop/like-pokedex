@@ -10,7 +10,7 @@ const TypesDetailPage = () => {
     const [searchValue, setSearchValue] = useState("");
     const [filteredPokemon, setFilteredPokemon] = useState([]);
 
-    // Met à jour la valeur de recherche
+
     const handleChange = (e) => {
         setSearchValue(e.currentTarget.value);
     };

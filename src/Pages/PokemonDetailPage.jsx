@@ -170,7 +170,7 @@ const PokemonDetailPage = () => {
                         style={{ width: "15rem", cursor: "pointer" }}
                         src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].species.name + ".jpg"}
                         onClick={() => {
-                            navigate('/pokemon/' + evolution.chain.evolves_to[0].species.name, { replace: true });
+                            navigate('/pokemon/' + evolution.chain.evolves_to[0].species.name);
                         }}
                         alt={evolution.chain.evolves_to[0].species.name}
                     />
@@ -184,7 +184,7 @@ const PokemonDetailPage = () => {
                         style={{ width: "15rem", cursor: "pointer" }}
                         src={"https://img.pokemondb.net/artwork/" + evolution.chain.evolves_to[0].evolves_to[0].species.name + ".jpg"}
                         onClick={() => {
-                            navigate('/pokemon/' + evolution.chain.evolves_to[0].evolves_to[0].species.name, { replace: true });
+                            navigate('/pokemon/' + evolution.chain.evolves_to[0].evolves_to[0].species.name);
                         }}
                         alt={evolution.chain.evolves_to[0].evolves_to[0].species.name}
                     />

@@ -6,6 +6,7 @@ import './App.css';
 import PokemonDetailPage from './Pages/PokemonDetailPage';
 import NavBar from './Components/Navbar';
 import TypesDetailPage from './Pages/TypesDetailPage';
+import GenerationsDetailsPages from './Pages/GenerationsDetailPage';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<HomePage></HomePage>}></Route>
         <Route path='/pokemon/:name' element={<PokemonDetailPage></PokemonDetailPage>} ></Route>
         <Route path='/type/:name' element={<TypesDetailPage></TypesDetailPage>}></Route>
+        <Route path='/generation/:name' element={<GenerationsDetailsPages></GenerationsDetailsPages>}></Route>
       </Routes>
     </BrowserRouter>
 
