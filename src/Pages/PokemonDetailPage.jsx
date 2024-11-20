@@ -27,7 +27,8 @@ const PokemonDetailPage = () => {
             setEvolution(resEvol.data)
 
 
-            console.log(response.data);
+            console.log(resBis.data.damage_relations.double_damage_from[0].name
+            );
 
 
 
@@ -116,7 +117,7 @@ const PokemonDetailPage = () => {
                     return <Button className={type.type.name + " m-1"} >{type.type.name}</Button>
                 })}</h5>
                 <h5>Lieu de vie : {pokemon.habitat && pokemon.habitat.name}</h5>
-                <div className={pokemon.types && pokemon.types[0].type.name + " d-flex mb-2 p-3"} style={{ borderRadius: "10px", width: "200px", height: "200px" }}>
+                <div className={pokemon.types && pokemon.types[0].type.name + " d-flex mb-2 p-3"} style={{ borderRadius: "10px", width: "fit-content", height: "fit-content" }}>
 
                     <div className="d-flex flex-column col-4">
                         <div>
@@ -141,7 +142,12 @@ const PokemonDetailPage = () => {
 
 
             </div>
-            <div className="d-flex">
+            <div className="d-flex flex-column">
+                <h5>Faiblesses : <br /></h5>{pokemon.damage_relations && pokemon.damage_relations.double_damage_from.map((faiblesse) => {
+                    return <Button className={faiblesse.name}>{faiblesse.name}</Button>
+                })
+                }
+
 
             </div>
             <div className="d-flex">

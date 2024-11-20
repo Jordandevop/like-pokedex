@@ -6,7 +6,7 @@ import PokemonCard from "../Components/PokemonsCards";
 const HomePage = () => {
 
     const [pokemons, setPokemons] = useState([]);
-    const [limit, setLimit] = useState(18);
+    const [limit, setLimit] = useState(20);
     const [currentPage, SetCurrentPage] = useState(1);
     const [maxPage, SetMaxPage] = useState(500);
     const [searchValue, setSearchValue] = useState("");
@@ -37,8 +37,12 @@ const HomePage = () => {
             return poke.name.toLowerCase().startsWith(searchValue.toLowerCase());
             // return poke.name.toLowerCase().includes(searchValue.toLowerCase());
         }))
+
     }, [searchValue, pokemons]);
 
+    useEffect(() => {
+        if (searchValue == "") { SetCurrentPage(1) }
+    }, [searchValue])
     return <Container className="d-flex flex-column align-items-center " >
         <Form>
             <Form.Group className="mt-5" controlId="exampleForm.ControlInput1">
