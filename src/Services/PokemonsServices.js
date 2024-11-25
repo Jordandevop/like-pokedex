@@ -20,6 +20,7 @@ function getStats(name) {
 function getEvolution(url) {
   return axios.get(url);
 }
+
 export default {
   getAllPokemons,
   getPokemonByName,

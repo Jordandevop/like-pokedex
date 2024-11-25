@@ -12,7 +12,7 @@ const TypesDetailPage = () => {
 
 
     const handleChange = (e) => {
-        setSearchValue(e.currentTarget.value);
+        setSearchValue(e.target.value);
     };
 
 

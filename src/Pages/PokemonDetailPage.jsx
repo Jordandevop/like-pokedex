@@ -21,6 +21,10 @@ const PokemonDetailPage = () => {
             const response = await PokemonsServices.getPokemonByName(name);
             const res = await PokemonsServices.getPokemonInfo(name);
             const resBis = await PokemonsServices.getStats(res.data.types[0].type.name);
+
+
+
+
             const resEvol = await PokemonsServices.getEvolution(response.data.evolution_chain.url);
 
             setPokemon({ ...resBis.data, ...res.data, ...response.data });
@@ -101,7 +105,7 @@ const PokemonDetailPage = () => {
                         navigate('/type/' + type.type.name)
                     }} >{type.type.name}</Button>
                 })}</h5>
-                {/* <h5>Lieu de vie : {pokemon.habitat && pokemon.habitat.name}</h5> */}
+
                 <div className="d-flex ">
                     <h5>Faiblesses : <br />{pokemon.damage_relations && pokemon.damage_relations.double_damage_from.map((faiblesse) => {
                         return <Button key={faiblesse.name} className={faiblesse.name + " m-1"} style={{ width: "fit-content", height: "fit-content" }}>{faiblesse.name}</Button>
@@ -130,7 +134,7 @@ const PokemonDetailPage = () => {
                             <p>{pokemon.weight}</p>
                         </div>
                     </div>
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column align-items-center">
                         <p style={{ color: "white" }}>Compétences :</p>
 
                         <p className="d-flex flex-column">{pokemon.abilities && pokemon.abilities.map((competence) => {
@@ -191,13 +195,7 @@ const PokemonDetailPage = () => {
                 )}
             <Button variant="primary" onClick={() => { navigate("/") }}>Retour aux Pokemon</Button>
 
-
-
         </div>
-
-
-
-
     </Container >;
 }
 

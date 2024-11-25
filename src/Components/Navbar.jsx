@@ -4,17 +4,25 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import TypesServices from '../Services/TypesServices';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import GenerationsServices from '../Services/GenerationsServices';
+import VersionsServices from '../Services/VersionsServices';
+import HabitatService from '../Services/HabitatService';
 
 const NavBar = () => {
 
     const [types, SetTypes] = useState([]);
     const [generations, setGenerations] = useState([]);
+    const [versions, setVersions] = useState([])
+    const [habitats, sethabitats] = useState([])
+    const navigate = useNavigate();
+    const navigateTo = (ver) => {
+        navigate("/version/" + ver.name, { state: { "version": ver } });
+    }
+
     const fetchTypes = async () => {
         try {
             const response = await TypesServices.GetAlltypes();
-
             SetTypes(response.data.results)
 
         } catch (error) {
@@ -26,8 +34,32 @@ const NavBar = () => {
     const fetchGenerations = async () => {
         try {
             const res = await GenerationsServices.getAllGenerations();
-
             setGenerations(res.data.results)
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
+    const fetchVersions = async () => {
+        try {
+            const resVersion = await VersionsServices.getAllVersions();
+
+            setVersions(resVersion.data.results)
+
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
+    const fetchhabitats = async () => {
+        try {
+            const reshab = await HabitatService.getHabitat();
+
+            sethabitats(reshab.data.results);
 
         } catch (error) {
             console.log(error);
@@ -42,16 +74,22 @@ const NavBar = () => {
         fetchGenerations();
     }, [])
 
+    useEffect(() => {
+        fetchVersions();
+    }, [])
+    useEffect(() => {
+        fetchhabitats()
+    }, [])
     return <>
 
 
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href="#home">Pokemon</Navbar.Brand>
+                <Navbar.Brand href="/">Pokemon</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Accueil</Nav.Link>
+
 
                         <NavDropdown title="Types" id="basic-nav-dropdown">
                             {types && types.map((type) => {
@@ -62,6 +100,18 @@ const NavBar = () => {
                             {generations && generations.map((gen) => {
                                 return <NavDropdown.Item href={'/generation/' + gen.name} key={gen.name}>{gen.name.charAt(0).toUpperCase() + gen.name.slice(1)}</NavDropdown.Item>
                             })}
+                        </NavDropdown>
+                        <NavDropdown title="Version de Jeu" id="basic-nav-dropdown">
+                            {versions && versions.map((ver) => {
+
+                                return <NavDropdown.Item href={'/version/' + ver.name} key={ver.name} onClick={() => navigateTo(ver.name)}>{ver.name.charAt(0).toUpperCase() + ver.name.slice(1)}</NavDropdown.Item>
+                            })}
+                        </NavDropdown>
+                        <NavDropdown title="Habitat" id="basic-nav-dropdown">
+                            {habitats && habitats.map((hab) => {
+                                return <NavDropdown.Item href={'/habitat/' + hab.name} key={hab.name}>{hab.name.charAt(0).toUpperCase() + hab.name.slice(1)}</NavDropdown.Item>
+                            })}
+
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

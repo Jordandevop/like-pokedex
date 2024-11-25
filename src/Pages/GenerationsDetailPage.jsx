@@ -16,9 +16,11 @@ const GenerationsDetailsPages = () => {
     const fetchGenerationByName = async () => {
         try {
             const response = await GenerationsServices.getPokemonByGeneration(name);
-            console.log(response.data.pokemon_species);
+
             setGeneration(response.data)
             setFilteredPokemon(response.data.pokemon_species)
+
+
         } catch (error) {
             console.log(error);
 
