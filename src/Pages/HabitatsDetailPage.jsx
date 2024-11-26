@@ -19,7 +19,7 @@ const HabitatsDetailPAge = () => {
 
 
             const res = await HabitatService.getPokemonByHabitat(name)
-            console.log(res.data);
+
             setHabitat(res.data.pokemon_species)
 
 

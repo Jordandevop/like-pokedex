@@ -8,13 +8,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 import GenerationsServices from '../Services/GenerationsServices';
 import VersionsServices from '../Services/VersionsServices';
 import HabitatService from '../Services/HabitatService';
+import LocationsService from '../Services/LocationsService';
 
 const NavBar = () => {
 
     const [types, SetTypes] = useState([]);
     const [generations, setGenerations] = useState([]);
-    const [versions, setVersions] = useState([])
-    const [habitats, sethabitats] = useState([])
+    const [versions, setVersions] = useState([]);
+    const [habitats, sethabitats] = useState([]);
+    const [locations, setLocations] = useState([]);
     const navigate = useNavigate();
     const navigateTo = (ver) => {
         navigate("/version/" + ver.name, { state: { "version": ver } });
@@ -58,12 +60,23 @@ const NavBar = () => {
     const fetchhabitats = async () => {
         try {
             const reshab = await HabitatService.getHabitat();
-
             sethabitats(reshab.data.results);
 
         } catch (error) {
             console.log(error);
 
+        }
+    }
+
+    const fetchLocations = async () => {
+        try {
+            const resLoc = await LocationsService.getAllLocations();
+
+            setLocations(resLoc.data.results);
+
+
+        } catch (error) {
+            log(error)
         }
     }
     useEffect(() => {
@@ -79,6 +92,9 @@ const NavBar = () => {
     }, [])
     useEffect(() => {
         fetchhabitats()
+    }, [])
+    useEffect(() => {
+        fetchLocations()
     }, [])
     return <>
 
@@ -110,6 +126,11 @@ const NavBar = () => {
                         <NavDropdown title="Habitat" id="basic-nav-dropdown">
                             {habitats && habitats.map((hab) => {
                                 return <NavDropdown.Item href={'/habitat/' + hab.name} key={hab.name}>{hab.name.charAt(0).toUpperCase() + hab.name.slice(1)}</NavDropdown.Item>
+                            })}
+                        </NavDropdown>
+                        <NavDropdown title="Localisation" id="basic-nav-dropdown">
+                            {locations && locations.map((loc) => {
+                                return <NavDropdown.Item href={'/location/' + loc.name} key={loc.name}>{loc.name.charAt(0).toUpperCase() + loc.name.slice(1)}</NavDropdown.Item>
                             })}
 
                         </NavDropdown>

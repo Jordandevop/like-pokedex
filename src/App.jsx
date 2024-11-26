@@ -8,6 +8,7 @@ import TypesDetailPage from './Pages/TypesDetailPage';
 import GenerationsDetailsPages from './Pages/GenerationsDetailPage';
 import VersionsDetailPage from './Pages/VersionsDetailPage';
 import HabitatsDetailPAge from './Pages/HabitatsDetailPage';
+import LocationdetailPage from './Pages/LocationDetailPage';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/generation/:name' element={<GenerationsDetailsPages></GenerationsDetailsPages>}></Route>
         <Route path='/version/:name' element={<VersionsDetailPage></VersionsDetailPage>}></Route>
         <Route path='/habitat/:name' element={<HabitatsDetailPAge></HabitatsDetailPAge>}></Route>
+        <Route path='/location/:name' element={<LocationdetailPage></LocationdetailPage>}></Route>
       </Routes>
 
     </BrowserRouter>
