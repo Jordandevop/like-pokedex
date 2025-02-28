@@ -28,7 +28,7 @@ const LocationdetailPage = () => {
     return <Container className="d-flex flex-column align-items-center">
         <div className="d-flex flex-column mt-5 justify-content-center">
             <div className="d-flex justify-content-center mt-3">
-                <h1>{tireLoc}</h1>
+                <h1 className="mt-3 mb-3">{tireLoc}</h1>
             </div>
             <div className="d-flex justify-content-center flex-wrap gap-3 col-12">
 

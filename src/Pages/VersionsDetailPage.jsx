@@ -25,11 +25,7 @@ const VersionsDetailPage = () => {
 
             const res = await VersionsServices.getPokemonByVersionGroup(response.data.version_group.name)
 
-
-
             const resTer = await VersionsServices.getVersionImgPokemon(res.data.generation.url)
-
-
             setVersions(resTer.data.pokemon_species)
 
 
@@ -49,8 +45,8 @@ const VersionsDetailPage = () => {
         <div className="d-flex flex-column mt-5 justify-content-center">
 
 
-            <div className="d-flex justify-content-center mt-3">
-                <h1>Pokemon présent dans la version {versionBis}</h1>
+            <div className="d-flex justify-content-center mt-3 mb-3">
+                <h1 className="mt-3 mb-3">Pokemon présent dans la version {versionBis}</h1>
             </div>
 
 

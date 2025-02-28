@@ -81,21 +81,14 @@ const NavBar = () => {
     }
     useEffect(() => {
         fetchTypes();
+        fetchGenerations();
+        fetchVersions();
+        fetchhabitats();
+        fetchLocations();
     }, []);
 
-    useEffect(() => {
-        fetchGenerations();
-    }, [])
 
-    useEffect(() => {
-        fetchVersions();
-    }, [])
-    useEffect(() => {
-        fetchhabitats()
-    }, [])
-    useEffect(() => {
-        fetchLocations()
-    }, [])
+
     return <>
 
 

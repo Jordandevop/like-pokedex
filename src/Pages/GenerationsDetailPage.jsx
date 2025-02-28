@@ -54,16 +54,23 @@ const GenerationsDetailsPages = () => {
                 />
             </Form.Group>
         </Form>
-        <div className="d-flex justify-content-center flex-wrap gap-5 col-12 mt-4">
-            {filteredPokemon && filteredPokemon.map((gen) => {
-                return <PokemonCard
-                    pokemonCard={gen}
-                    key={gen.name}
-                ></PokemonCard>
-            }
+        <div className="d-flex justify-content-center flex-column gap-5 col-12 mt-4">
+            <div className="d-flex justify-content-center">
+                <h1>{generation.names && generation.names[3].name}</h1>
+            </div>
+            <div className="d-flex justify-content-center flex-wrap gap-3 col-12"
+            >
+                {filteredPokemon && filteredPokemon.map((gen) => {
+                    return <PokemonCard
+                        pokemonCard={gen}
+                        key={gen.name}
+                    ></PokemonCard>
+                }
 
 
-            )}
+                )}
+            </div>
+
         </div>
 
 
